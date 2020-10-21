@@ -1,10 +1,15 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
-        Graph g = new Graph(3);
-        g.addEdge(0,1);
-        g.addEdge(1,2);
-        g.addEdge(2,0);
+        Graph<String,Integer> g = new Graph<>();
 
-        g.displayGraph();
+        g.addEdge("A","B",7);
+        g.addEdge("C","A",5);
+        g.addEdge("C","D",1);
+        g.addEdge("E","C",2);
+
+        System.out.println(g);
+
     }
 }
