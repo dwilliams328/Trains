@@ -5,44 +5,36 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
-        LinkedList cities = new LinkedList();
-        ArrayList<String> destinations = new ArrayList<>();
-        ArrayList<Integer> weight = new ArrayList<>();
-        ArrayList<String> source = new ArrayList<>();
+    public static void main(String[] args){
+        ArrayList<Node> vertices = new ArrayList<>();
 
-        String inputData = new String();
+        Node a = new Node("A");
+        Node b = new Node("B");
+        Node c = new Node("C");
+        Node d = new Node("D");
+        Node e = new Node("E");
 
-        try {
-            //Path of file
-            Scanner scanner = new Scanner(new File("C:\\Users\\David\\IdeaProjects\\Trains\\src\\InputData.csv"));
+        vertices.add(a);
+        vertices.add(b);
+        vertices.add(c);
+        vertices.add(d);
+        vertices.add(e);
 
-            while (scanner.hasNext()) {
-                inputData = scanner.nextLine();
-                System.out.println("Data from input file: " + inputData);
+        Graph graph = new Graph(vertices);
 
-            }
-            scanner.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+        graph.addEdge(a,"B",5);
+        graph.addEdge(a,"D",5);
+        graph.addEdge(a,"E",7);
+        graph.addEdge(b,"C",4);
+        graph.addEdge(c,"D",8);
+        graph.addEdge(c,"E",2);
+        graph.addEdge(d,"C",8);
+        graph.addEdge(d,"E",6);
+        graph.addEdge(e,"B",3);
 
-        String[] splitArray = inputData.split(",");
-
-        System.out.println("Direct Graph Array: " + Arrays.toString(splitArray));
-
-        for(int i = 0; i < splitArray.length;i++){
-            String[] nodeData = splitArray[i].split("");
-            source.add(nodeData[0]);
-            destinations.add(nodeData[1]);
-            weight.add(Integer.parseInt(nodeData[2]));
-
-        }
-        System.out.println("split into list individual lists: 1 to 1 to 1 indexing");
-        System.out.println(source);
-        System.out.println(destinations);
-        System.out.println(weight);
+        graph.printGraph();
 
     }
 }
+
+
